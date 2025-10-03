@@ -1,22 +1,19 @@
 public class LongestSequenceOf1AfterFlippingABit {
     public static int method(String s){
-        int maxLen = 0;
-        int zeroCount = 0; 
-        int left = 0;    
-
-        for(int right = 0; right < s.length(); right++){
-            if(s.charAt(right) == '0') zeroCount++;
-
-           
-            while(zeroCount > 1){
-                if(s.charAt(left) == '0') zeroCount--;
+        int maxlen = 0;
+        int left = 0;
+        int zcount = 0;
+        for(int i =0;i<s.length();i++){
+            if(s.charAt(i)=='0'){
+                zcount++;
+            }
+            while(zcount>1){
+                if(s.charAt(left)=='0') zcount--;
                 left++;
             }
-
-            maxLen = Math.max(maxLen, right - left + 1);
+            maxlen = Math.max(maxlen,i-left+1);
         }
-
-        return maxLen;
+        return maxlen;
     }
 
     public static void main(String args[]){
